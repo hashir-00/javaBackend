@@ -11,7 +11,7 @@ package com.mycompany.cw.DAO;
 
 
 
-import com.mycompany.cw.Doctor;
+import com.mycompany.cw.model.Doctor;
 import java.util.ArrayList;
 
 

@@ -4,7 +4,7 @@
  */
 package com.mycompany.cw.DAO;
 
-import com.mycompany.cw.Person;
+import com.mycompany.cw.model.Person;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 

@@ -9,9 +9,8 @@ package com.mycompany.cw.DAO;
  * @author Hashirhalaldeen
  */
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
-import com.mycompany.cw.Prescription;
+import com.mycompany.cw.model.Prescription;
 
 public class PrescriptionDAO {
     private static final Logger log = Logger.getLogger(PrescriptionDAO.class.getName());

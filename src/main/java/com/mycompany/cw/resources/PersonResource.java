@@ -4,7 +4,7 @@
  */
 package com.mycompany.cw.resources;
 
-import com.mycompany.cw.Person;
+import com.mycompany.cw.model.Person;
 import com.mycompany.cw.DAO.PersonDAO;
 import java.util.ArrayList;
 import javax.ws.rs.Consumes;

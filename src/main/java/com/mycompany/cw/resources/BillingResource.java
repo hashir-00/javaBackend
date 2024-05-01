@@ -5,7 +5,7 @@
 package com.mycompany.cw.resources;
 
 import javax.ws.rs.Path;
-import com.mycompany.cw.Billing;
+import com.mycompany.cw.model.Billing;
 import com.mycompany.cw.DAO.BillingDAO;
 import java.util.ArrayList;
 import javax.ws.rs.Consumes;

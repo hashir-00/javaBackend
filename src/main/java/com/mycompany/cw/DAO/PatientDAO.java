@@ -8,18 +8,18 @@ package com.mycompany.cw.DAO;
  *
  * @author Hashirhalaldeen
  */
-import com.mycompany.cw.MedicalRecord;
+import com.mycompany.cw.model.Billing;
+import com.mycompany.cw.model.MedicalRecord;
 import java.util.ArrayList;
 import java.util.logging.Logger;
-import com.mycompany.cw.Patient;
-import com.mycompany.cw.Person;
+import com.mycompany.cw.model.Patient;
 
 public class PatientDAO {
     private static final Logger log = Logger.getLogger(PatientDAO.class.getName());
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
      static {
-     patientList.add(new Patient(new MedicalRecord(),"ee","sss","sssa",1));
+     patientList.add(new Patient(new MedicalRecord(),"ee","sss","sssa",1,new Billing()));
   }
   
     // Method to add a patient to the list

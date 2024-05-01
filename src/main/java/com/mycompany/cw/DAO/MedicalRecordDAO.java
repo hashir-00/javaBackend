@@ -9,9 +9,9 @@ package com.mycompany.cw.DAO;
  * @author Hashirhalaldeen
  */
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
-import com.mycompany.cw.MedicalRecord;
+import com.mycompany.cw.model.MedicalRecord;
+import com.mycompany.cw.model.Prescription;
 
 public class MedicalRecordDAO {
     private static final Logger log = Logger.getLogger(MedicalRecordDAO.class.getName());
@@ -19,8 +19,8 @@ public class MedicalRecordDAO {
 
  
 static {
-    medicalRecordList.add(new MedicalRecord("123","test","ssd"));
-      medicalRecordList.add(new MedicalRecord("1273","test","ssd"));
+    medicalRecordList.add(new MedicalRecord("123","test","ssd",new Prescription()));
+      medicalRecordList.add(new MedicalRecord("1273","test","ssd",new Prescription()));
 }
     // Method to add a medical record to the list
     public void addMedicalRecord(MedicalRecord medicalRecord) {

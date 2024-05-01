@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import com.mycompany.cw.MedicalRecord;
+import com.mycompany.cw.model.MedicalRecord;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
