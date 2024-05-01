@@ -1,3 +1,4 @@
+com\mycompany\cw\resources\BillingResource.class
 com\mycompany\cw\Appointments.class
 com\mycompany\cw\DAO\MedicalRecordDAO.class
 com\mycompany\cw\resources\PersonResource.class

@@ -10,14 +10,17 @@ import com.mycompany.cw.Billing;
  * @author Hashirhalaldeen
  */
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class BillingDAO {
     private static final Logger log = Logger.getLogger(BillingDAO.class.getName());
-    private List<Billing> billingList = new ArrayList<>();
+    private static ArrayList<Billing> billingList = new ArrayList<>();
 
-   
+    static{
+    billingList.add(new Billing("1",1222,12212));
+     billingList.add(new Billing("2",1222,12212));
+      billingList.add(new Billing("3",1222,12212));
+    }
 
     // Method to add a billing record to the list
     public void addBillingRecord(Billing billingRecord) {
@@ -26,25 +29,33 @@ public class BillingDAO {
     }
 
     // Method to get all billing records
-    public List<Billing> getAllBillingRecords() {
+    public ArrayList<Billing> getAllBillingRecords() {
         log.info("Billing record returned"); 
         return billingList;
     }
+    
+    public Billing getBillByInvoiceId(String Id){
+        for (Billing bill :billingList){
+            if(bill.getInvoiceId().equals(Id)){
+                return bill;
+            }
+           
+        } return null;
+    }
 
     // Method to update a billing record
-    public void updateBillingRecord(Billing oldBillingRecord, Billing newBillingRecord) {
-        int index = billingList.indexOf(oldBillingRecord);
-        if (index != -1) {
-            billingList.set(index, newBillingRecord);
-            log.info("Billing record updated" );
-        } else {
-            log.info("Error: Billing record not found or unable to update");
+    public void updateBillingRecord(Integer payment,Integer creditBalance,String ID) {
+        for(Billing bill:billingList){
+            if (bill.getInvoiceId().equals(ID)){
+                bill.setCreditBalance(creditBalance);
+                bill.setPayments(payment);
+            }
         }
     }
 
     // Method to remove a billing record
-    public void removeBillingRecord(Billing billingRecord) {
-        billingList.remove(billingRecord);
+    public void removeBillingRecord(String ID) {
+        billingList.removeIf(bill -> bill.getInvoiceId().equals(ID));
         log.info("Billing record removed");
     }
 }
