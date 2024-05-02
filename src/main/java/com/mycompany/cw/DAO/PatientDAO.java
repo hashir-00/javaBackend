@@ -18,50 +18,55 @@ public class PatientDAO {
     private static final Logger log = Logger.getLogger(PatientDAO.class.getName());
     private static ArrayList<Patient> patientList = new ArrayList<>();
 
-     static {
-     patientList.add(new Patient(new MedicalRecord(),"ee","sss","sssa",1,new Billing()));
-  }
-  
+    static {
+        patientList.add(new Patient(new MedicalRecord(), "ee", "sss", "sssa", 1, new Billing()));
+    }
+
     // Method to add a patient to the list
     public void addPatient(Patient patient) {
         patientList.add(patient);
-        log.info("Patient added" );
+        log.info("Patient added: " + patient);
     }
 
     // Method to get all patients
     public ArrayList<Patient> getAllPatients() {
+        log.info("Retrieving all patients");
         return patientList;
     }
-  public Patient getPatientByName(String guy){
-        for(Patient person :patientList){
-            if(person.getName().equals(guy)){
-                log.info("Person details returned");
-                return person;
+
+    // Method to get a patient by name
+    public Patient getPatientByName(String name) {
+        for (Patient patient : patientList) {
+            if (patient.getName().equals(name)) {
+                log.info("Patient found by name: " + name);
+                return patient;
             }
         }
+        log.warning("Patient not found by name: " + name);
         return null;
     }
+
     // Method to update a patient
-    public void updatePatient(String name, int contact,String address ) {
-      for(Patient patient:patientList){
-          if(patient.getName().equals(name)){
-              patient.setAddress(address);
-              patient.setContact(contact);
-          }
-      }
+    public void updatePatient(String name, int contact, String address) {
+        for (Patient patient : patientList) {
+            if (patient.getName().equals(name)) {
+                patient.setAddress(address);
+                patient.setContact(contact);
+                log.info("Patient updated: " + patient);
+                return;
+            }
+        }
+        log.warning("Patient not found for update with name: " + name);
     }
 
     // Method to remove a patient
-    public void removePatient(String guy) {
-        for (Patient patient : patientList ){
-            if (patient.getName().equals(guy)){
-                patientList.remove(patient);
-                   log.info("Patient removed" );
+    public void removePatient(String name) {
+        patientList.removeIf(patient -> {
+            if (patient.getName().equals(name)) {
+                log.info("Patient removed: " + patient);
+                return true;
             }
-         log.info("Error: Patient not found or unable to remove");
-      
-            
-        
+            return false;
+        });
     }
-}
 }

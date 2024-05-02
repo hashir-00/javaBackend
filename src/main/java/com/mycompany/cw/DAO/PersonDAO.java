@@ -14,51 +14,55 @@ import java.util.logging.Logger;
  */
 public class PersonDAO {
     private static ArrayList<Person> personsList = new ArrayList<>();
-   private static final Logger log = Logger.getLogger(PersonDAO.class.getName());
+    private static final Logger log = Logger.getLogger(PersonDAO.class.getName());
     
-  static {
-      personsList.add(new Person("hashir","add",1));
-       personsList.add(new Person("hashisr","add",3));
-        personsList.add(new Person("hashisdsr","add",2));
-         personsList.add(new Person("hashaair","add",14));
-  }
+    static {
+        personsList.add(new Person("hashir", "add", 1));
+        personsList.add(new Person("hashisr", "add", 3));
+        personsList.add(new Person("hashisdsr", "add", 2));
+        personsList.add(new Person("hashaair", "add", 14));
+    }
     
     public ArrayList<Person> getAllPersons(){
-        log.info("All person details returned");
+        log.info("Retrieving all person details");
         return personsList;
     }
     
-       
-    public Person getPersonByName(String guy){
-        for(Person person :personsList){
-            if(person.getName().equals(guy)){
-                log.info("Person details returned");
+    public Person getPersonByName(String name){
+        for(Person person : personsList){
+            if(person.getName().equals(name)){
+                log.info("Person found by name: " + name);
                 return person;
             }
         }
+        log.warning("Person not found by name: " + name);
         return null;
     }
     
     public void addPerson(Person person){
         personsList.add(person);
-        log.info("Person added");
+        log.info("Person added: " + person);
     }
     
-    public void deletePerson(String guy){
-       personsList.removeIf(person->person.getName().equals(guy));
-     
+    public void deletePerson(String name){
+        personsList.removeIf(person -> {
+            if(person.getName().equals(name)){
+                log.info("Person removed: " + person);
+                return true;
+            }
+            return false;
+        });
     } 
-    public void updatePerson( String name,int contact,String address) {
-       for(Person person:personsList){
+    
+    public void updatePerson(String name, int contact, String address) {
+        for(Person person : personsList){
             if (person.getName().equals(name)) {
-            person.setContact(contact);
-            person.setAddress(address);
-           
-            log.info("Person updated" );
-        } else {
-            log.info("Error: Person not found or unable to update");
+                person.setContact(contact);
+                person.setAddress(address);
+                log.info("Person updated: " + person);
+                return;
+            }
         }
-       }
-       
+        log.warning("Person not found for update with name: " + name);
     }
 }
