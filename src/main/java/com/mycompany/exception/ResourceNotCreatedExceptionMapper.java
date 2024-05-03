@@ -22,7 +22,7 @@ public class ResourceNotCreatedExceptionMapper implements ExceptionMapper<Resour
     @Override
     public Response toResponse(ResourceNotCreatedException exception) {
          LOGGER.error("ResourceNotCreatedException caught: {}",
-exception.getMessage(), exception);
+exception.getMessage());
         return Response.status(Response.Status.METHOD_NOT_ALLOWED)
                        .entity(  exception.getMessage())
                        .build();
